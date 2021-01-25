@@ -30,11 +30,11 @@ void stepper::init(){
 }
 
 void stepper::setHome(){
-    stepperPosition =0;
+    this->stepperPosition =0;
 }
 
 void stepper::setLimit(){
-    stepperPositionLimit=stepperPosition;
+    this->stepperPositionLimit=this->stepperPosition;
 }
 
 void stepper::setMaxFreq(int maxFreq){
@@ -50,6 +50,12 @@ void stepper::setRampSteps(int rampSteps){
 }
 void stepper::setRampLevels(int rampLevels){
     this->rampLevels=rampLevels;
+}
+unsigned long stepper::getPosition(){
+    return this->stepperPosition;
+}
+unsigned long stepper::getPositionLimit(){
+    return this->stepperPositionLimit;
 }
 
 void stepper::moveStepper(unsigned long numSteps, bool stepperDir){

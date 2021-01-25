@@ -33,6 +33,9 @@ class stepper {
         void setRampSteps(int rampSteps);
         void setRampLevels(int rampLevels);
 
+        unsigned long getPosition();
+        unsigned long getPositionLimit();
+
         void moveStepper(unsigned long numSteps, bool stepperDir);
         void moveStepperUNSAFE(unsigned long numSteps, bool stepperDir);
 
