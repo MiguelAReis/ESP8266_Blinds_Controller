@@ -27,7 +27,7 @@ stepper::stepper(byte DIR_PIN,byte STEP_PIN,byte EN_PIN,byte INDEX_PIN, byte TX_
 }
 
 void stepper::init(){
-    maxFreq = 10000;
+    maxFreq = 1000;
     minFreq = 1000;
     rampSteps = 3000;
     rampLevels = 100;
@@ -234,4 +234,8 @@ void stepper::writeIHOLD_RUN(uint8_t IHOLD,uint8_t IRUN, uint8_t IHOLDDELAY){
 }
 void stepper::writeVACTUAL(bool direction, uint32_t speed){
     sendData(VACTUAL,(direction<<24)|(speed&0x7FFFFF));
+}
+
+void stepper::writeCHOPCONF(bool lowSideProtection, bool gndProtection, bool enDoubleEdge, bool interpolate, uint8_t MRES, bool vsense, uint8_t blankTimeSelect, uint8_t HEND, uint8_t HSTST, uint8_t TOFF){
+    sendData(CHOPCONF,(lowSideProtection<<31)|(gndProtection<<30)|(enDoubleEdge<<29)|(interpolate<<28)|((MRES&0x0F)<<24)|(vsense<<17)|((blankTimeSelect&0x03)<<15)|((HEND&0x0F)<<7)|((HSTST&0x07)<<4)|(TOFF&0x0F));
 }

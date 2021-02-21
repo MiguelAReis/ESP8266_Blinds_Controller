@@ -54,6 +54,8 @@ class stepper {
         void writeGCONF(bool i_scale_analog, bool internal_rsense, bool en_spreadcycle, bool direction, bool index_otpw,bool index_step, bool pdn_disable, bool mstep_reg_select, bool multistep_filt, bool test_mode);
         void writeIHOLD_RUN(uint8_t IHOLD,uint8_t IRUN, uint8_t IHOLDDELAY);
         void writeVACTUAL(bool direction, uint32_t speed);
+        void writeCHOPCONF(bool lowSideProtection, bool gndProtection, bool enDoubleEdge, bool interpolate, uint8_t MRES, bool vsense, uint8_t blankTimeSelect, uint8_t HEND, uint8_t HSTST, uint8_t TOFF);
+
 };
 
 #endif
